@@ -1,0 +1,57 @@
+{
+  "name": "carto-fe",
+  "version": "0.0.0-development",
+  "description": "",
+  "main": "dist/manhattan.js",
+  "scripts": {
+    "commit": "git-cz",
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "test": "node ./node_modules/karma/bin/karma start",
+    "prebuild": "rimraf dist",
+    "build": "npm-run-all --parallel build:*",
+    "build:umd": "webpack --output-filename manhattan.js",
+    "build:umd.min": "webpack --output-filename manhattan.min.js -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpcano/carto-fe.git"
+  },
+  "keywords": [
+    "carto",
+    "webgl"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "Jesus Cano <jcanovel@gmail.com> (http://jesus.engineer/)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/jpcano/carto-fe/issues"
+  },
+  "homepage": "https://github.com/jpcano/carto-fe#readme",
+  "dependencies": {
+    "gl-matrix-mat4": "2.2.1-npm",
+    "jquery": "3.2.1",
+    "jquery-mousewheel": "3.1.13"
+  },
+  "devDependencies": {
+    "chai": "4.0.2",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
+    "husky": "0.14.3",
+    "karma": "1.7.0",
+    "karma-chai": "0.1.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-mocha": "1.3.0",
+    "karma-webpack": "2.0.4",
+    "mocha": "3.4.2",
+    "npm-run-all": "4.0.2",
+    "rimraf": "2.6.1",
+    "webpack": "3.3.0"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+  }
+}

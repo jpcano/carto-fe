@@ -1,0 +1,11 @@
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+node_modules
+.idea
+coverage
+dist
+.nyc_output
