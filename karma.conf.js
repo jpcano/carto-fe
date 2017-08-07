@@ -59,11 +59,15 @@ module.exports = function(config) {
         require("karma-mocha"),
         require("karma-chrome-launcher"),
     ],
-
+    customLaunchers: {
+       Chrome_travis_ci: {
+          base: 'Chrome',
+          flags: ['--no-sandbox']
+       }
+    },
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
-
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -72,5 +76,8 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
+  });
+  if (process.env.TRAVIS) {
+      config.browsers = ['Chrome_travis_ci'];
+  }
 };
