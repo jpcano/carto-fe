@@ -6,7 +6,7 @@ My solution to [Carto FE Test 1](CHALLENGE.md). There is a demo [here](http://je
 
 ## How to build
 
-- Install [Node.js](http://nodejs.org/download/) (I use v6 but it should work with other versions).
+- Install [Node.js](http://nodejs.org/download/) (I tested it in node v6 and v7)
 - Install Node.js dependencies: `npm install`.
 - Build the app: `npm build`.
 - Open the example in a browser: `examples/index.html`.
@@ -35,7 +35,7 @@ The manhattan function renders the map on the canvas ID passed as the first argu
        </script>
  ```
 
-The second argument in manhattan function is the options. All options have a default value:
+The second argument in manhattan function is the options. All options have a default value and are optional:
 
 ```javascript
        {
@@ -69,13 +69,13 @@ The second argument in manhattan function is the options. All options have a def
 
 ### Loading time
 
-Fetching the whole geoJSON takes time using a low speed internet connection (it is ~10 MB). To improve the user experience in this scenario, we request small chunks of 5000 rows from the server and we render them on the fly.
+Fetching the whole geoJSON takes a lot of time using a low speed internet connection (it is ~10 MB). To improve the user experience in this scenario, we request small chunks of 5000 rows from the server and it renders them on the fly.
 
-Also, to improve the loading time we used the minimum number of dependencies. Just JQuery for better cross browser compatibility for event handling but a version without JQuery is also developed (it is commented on the code).
+Also, to improve the loading time I used the minimum number of dependencies. Just JQuery for better cross browser compatibility for event handling but a version without JQuery is also developed (it is commented on the code).
 
 ### Rendering time
 
-From the three rendering options we considered (SVG, HTML 5 Canvas and WebGL). We chose WebGL to improve the rendering time.
+From the three rendering options I considered (SVG, HTML 5 Canvas and WebGL). I chose WebGL to improve the rendering time.
 
 The key factor for this decision is the zooming and panning actions which can be be benefited from the WebGL speed for matrix computations.
 
@@ -92,4 +92,4 @@ When zooming very deep there are issues with the precision of how points are dra
 ### Canvas testing
 
 Karma test all the functions in the fetcher module and if the geoJSON is correctly parsed to draw it as GL_LINES.
-I did not test if the map is drawn correctly and responds to mouse actions. But it is something interesting to implement.
+I did not test if the map is drawn correctly and responds to mouse actions. But it is something interesting to implement in the future.
